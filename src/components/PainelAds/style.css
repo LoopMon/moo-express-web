@@ -1,0 +1,52 @@
+.banner {
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 800px;
+    height: 15rem;
+    /* background-color: purple; */
+    border-radius: .5rem;
+
+    position: relative;
+}
+
+.painels {
+    position: relative;
+    display: flex;
+    height: 100%;
+}
+
+.painel {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.painel img {
+    display: block;
+    height: 100%;
+    object-fit: contain;
+}
+
+#left, #right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#left {
+    left: .5rem;
+}
+
+#right {
+    right: .5rem;
+}
+

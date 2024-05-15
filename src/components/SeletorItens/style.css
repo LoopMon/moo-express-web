@@ -1,0 +1,86 @@
+#select-button {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    border: 1px solid #252529;
+    background-color: #fff;
+}
+
+#selected-value {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    padding-right: .5rem;
+}
+
+.icones i[data-direction="up"] {
+    display: none;
+}
+
+#options-view-button:checked + #select-button {
+    border-color: green;
+}
+
+#options-view-button:checked + #select-button .icones i[data-direction="down"] {
+    display: none;
+}
+
+#options-view-button:checked + #select-button .icones i[data-direction="up"] {
+    display: block;
+}
+
+.category-select {
+    position: relative;
+}
+
+#options-view-button {
+    all: unset;
+
+    position: absolute;
+    inset: 0;
+
+    cursor: pointer;
+    z-index: 3;
+}
+
+.select {
+    position: relative;
+}
+
+#options {
+    position: absolute;
+    width: 100%;
+    top: 3rem;
+    margin-top: .25rem;
+    border-radius: .375rem;
+    border: 1px solid #252529;
+    background-color: #fff;
+    display: none;
+}
+
+.option {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    padding: .75rem;
+}
+
+.option:hover {
+    background-color: #808090;
+}
+
+.option input[type="radio"] {
+    all: unset;
+
+    position: absolute;
+    inset: 0;
+
+    cursor: pointer;
+}
+
+.category-select:has(#options-view-button:checked) + #options {
+    display: block;
+}
