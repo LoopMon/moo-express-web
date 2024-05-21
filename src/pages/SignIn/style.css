@@ -3,26 +3,33 @@
     width: 100%;
 
     display: flex;
+
+    position: relative;
 }
 
 #pg-login .fundo {
-    width: 70vw;
+    width: 100vw;
     height: 100%;
 }
 
 #pg-login .fundo img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
     object-fit: cover;
 }
 
 #pg-login .log-in {
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
 
-    width: 30vw;
+    width: 500px;
+    background-color: #fff;
+    z-index: 3;
+    right: 0;
     height: 100%;
 
     overflow-x: hidden;
