@@ -1,197 +1,100 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import Logo from "../../assets/logo.png"
 import GoogleIcon from "../../assets/Google-icone.png"
 import FacebookIcon from "../../assets/facebook-icone.png"
-import Logo from "../../assets/logo.png"
-import { useSubmit } from "react-router-dom"
+import Background from "../../assets/bg-login.png"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
 import "./style.css"
 
 function SignIn() {
-    const [nome, setNome] = useState("")
-    const [pessoa, setPessoa] = useState("")
-    const [personSelected, setPersonSelected] = useState("CPF")
-    const [email, setEmail] = useState("")
+    const [cadastro, setCadastro] = useState("")
     const [senha, setSenha] = useState("")
-    const [confirmSenha, setConfirmSenha] = useState("")
 
-    const submit = useSubmit()
+    const navigate = useNavigate()
 
     return (
-        <div id="sign-bg">
-            <main id="sign-in">
-                <section>
-                    <div className="logo">
-                        <img src={Logo} alt="logo mooexpress" />
-                        <h1>Crie a sua conta. É grátis!</h1>
+        <main id="pg-login">
+            <div className="fundo">
+                <img src={Background} alt="background" />
+            </div>
+            <section className="log-in">
+                <div className="logo">
+                    <img src={Logo} alt="logo MooExpress" />
+                    <h1>Bem-vindoo!</h1>
+                </div>
+
+                <form
+                    action=""
+                    onSubmit={(event) => {
+                        event.preventDefault()
+                        const data = localStorage.getItem(cadastro)
+
+                        if (data == null) {
+                            alert("Usuário não existe")
+                            return
+                        }
+
+                        const json = JSON.parse(data)
+
+                        if (
+                            (json.email === cadastro ||
+                                json.pessoa === cadastro) &&
+                            json.senha === senha
+                        ) {
+                            localStorage.setItem("logado", json.nome)
+                            navigate("/home")
+                        }
+                    }}
+                >
+                    <div className="campo">
+                        <label htmlFor="login">Login:</label>
+                        <input
+                            value={cadastro}
+                            onChange={(event) => {
+                                setCadastro(event.target.value)
+                            }}
+                            type="text"
+                            placeholder="E-mail/CPF/CNPJ"
+                            id="login"
+                            required
+                        />
                     </div>
 
-                    <div className="redes">
-                        <div>
+                    <div className="campo">
+                        <label htmlFor="senha">Senha:</label>
+                        <input
+                            value={senha}
+                            onChange={(event) => {
+                                setSenha(event.target.value)
+                            }}
+                            type="password"
+                            id="senha"
+                            required
+                        />
+                    </div>
+
+                    <button type="submit">Entrar</button>
+                </form>
+
+                <div className="se-conecte">
+                    <span>
+                        <span>ou conecte com</span>
+                    </span>
+                    <div className="conexoes">
+                        <a href="">
                             <img src={GoogleIcon} alt="google" />
-                        </div>
-                        <div>
+                        </a>
+                        <a href="">
                             <img src={FacebookIcon} alt="facebook" />
-                        </div>
+                        </a>
                     </div>
-
-                    <span>
-                        <span>ou</span>
-                    </span>
-
-                    <span>
-                        Nos informe alguns dados para que possamos melhorar a
-                        sua experiência na MooExpress.
-                    </span>
-
-                    <form
-                        action=""
-                        onSubmit={(event) => {
-                            event.preventDefault()
-
-                            const dado = {
-                                nome,
-                                pessoa,
-                                email,
-                                senha,
-                                confirmSenha,
-                            }
-                            // temporario
-                            localStorage.setItem(
-                                dado.email,
-                                JSON.stringify(dado),
-                            )
-
-                            submit(null, { method: "get", action: "/login" })
-                        }}
-                    >
-                        <label className="campo" htmlFor="apelido">
-                            <span>Como você quer ser chamado(a)?*</span>
-                            <input
-                                value={nome}
-                                onChange={(event) => {
-                                    setNome(event.target.value)
-                                }}
-                                type="text"
-                                id="apelido"
-                                placeholder="Exemplo: Novilho branco"
-                                required
-                            />
-                            <span>
-                                Aparecerá em seu perfil, anúncios e chats.
-                            </span>
-                        </label>
-
-                        <div className="campo pessoa">
-                            <span>Escolha o tipo da sua conta:</span>
-
-                            <div>
-                                <label
-                                    htmlFor="pessoa1"
-                                    onClick={() => setPersonSelected("CPF")}
-                                >
-                                    <input
-                                        type="radio"
-                                        name="pessoa"
-                                        id="pessoa1"
-                                        defaultChecked
-                                    />
-                                    Pessoa Física
-                                </label>
-                                <label
-                                    htmlFor="pessoa2"
-                                    onClick={() => setPersonSelected("CNPJ")}
-                                >
-                                    <input
-                                        type="radio"
-                                        name="pessoa"
-                                        id="pessoa2"
-                                    />
-                                    Pessoa Jurídica
-                                </label>
-                            </div>
-                        </div>
-
-                        <label className="campo" htmlFor="pessoa">
-                            <span>{personSelected}*</span>
-                            <input
-                                value={pessoa}
-                                onChange={(event) => {
-                                    setPessoa(event.target.value)
-                                }}
-                                type="text"
-                                name="pessoa"
-                                id="pessoa"
-                                required
-                            />
-                        </label>
-
-                        <label className="campo" htmlFor="email">
-                            <span>Email*</span>
-                            <input
-                                value={email}
-                                onChange={(event) => {
-                                    setEmail(event.target.value)
-                                }}
-                                type="email"
-                                name="email"
-                                id="email"
-                                placeholder="exemplo@mooexpress.com"
-                                required
-                            />
-                            <span>Enviaremos um e-mail de confirmação</span>
-                        </label>
-
-                        <label className="campo" htmlFor="senha">
-                            <span>Senha*</span>
-                            <input
-                                value={senha}
-                                onChange={(event) => {
-                                    setSenha(event.target.value)
-                                }}
-                                type="password"
-                                name="senha"
-                                id="senha"
-                                required
-                            />
-                            <span>
-                                Use letras, números e caracteres especiais
-                            </span>
-                        </label>
-
-                        <label className="campo" htmlFor="confirm-senha">
-                            <span>Confirmar Senha*</span>
-                            <input
-                                value={confirmSenha}
-                                onChange={(event) => {
-                                    setConfirmSenha(event.target.value)
-                                }}
-                                type="password"
-                                name="confirmsenha"
-                                id="confirm-senha"
-                                required
-                            />
-                            <span>
-                                Segunda senha deve ser igual a primeira.
-                            </span>
-                        </label>
-
-                        <button type="submit" disabled={senha !== confirmSenha}>
-                            Criar conta
-                        </button>
-                    </form>
-
-                    <span>
-                        Já tem uma conta? <Link to="../login">Entrar</Link>
-                    </span>
-                </section>
+                </div>
 
                 <span>
-                    Ao continuar, você concorda com os Termos de uso e a
-                    Política de Privacidade da MooExpress e seus parceiros, e em
-                    receber comunicações da MooExpress.
+                    Não tem uma conta? <Link to="/signup">Casdastre-se</Link>
                 </span>
-            </main>
-        </div>
+            </section>
+        </main>
     )
 }
 
