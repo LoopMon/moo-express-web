@@ -9,7 +9,6 @@ function HeaderOffLine() {
                 <img src={Logo} alt="Logo moo express" />
             </div>
             <div className="nav-bar">
-                {" "}
                 {/* Barra de Pesquisa */}
                 <div className="bar">
                     <input
@@ -20,7 +19,7 @@ function HeaderOffLine() {
                         <i className="bi bi-search"></i>
                     </a>
                 </div>
-            </div>{" "}
+            </div>
             {/* Fim Barra de Pesquisa */}
             <nav>
                 <a href="">
@@ -38,11 +37,11 @@ function HeaderOffLine() {
                     <span>Notificações</span>
                 </a>
 
-                <Link to="login" id="entrar">
+                <Link to="/signin" id="entrar">
                     <span>Entrar</span>
                 </Link>
 
-                <Link to="login" id="anunciar">
+                <Link to="/signin" id="anunciar">
                     <span>Anunciar</span>
                 </Link>
             </nav>
