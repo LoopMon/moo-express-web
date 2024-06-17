@@ -118,7 +118,8 @@ const adsElements = anuncios.map((anuncio) => (
 ))
 
 function HomeOnLine() {
-    const [abaActived, setAbaActived] = useState(true)
+    const [abaActived1, setAbaActived1] = useState(true)
+    const [abaActived2, setAbaActived2] = useState(true)
 
     return (
         <>
@@ -133,16 +134,24 @@ function HomeOnLine() {
                                 type="radio"
                                 name="aba"
                                 id="mais-buscados"
-                                checked={abaActived}
+                                checked={abaActived1}
                                 onChange={() => {
-                                    setAbaActived(!abaActived)
+                                    setAbaActived1(!abaActived1)
                                 }}
                             />
                             <label htmlFor="mais-buscados">
                                 <span>Mais buscados</span>
                             </label>
 
-                            <input type="radio" name="aba" id="mais-recentes" />
+                            <input
+                                type="radio"
+                                name="aba"
+                                id="mais-recentes"
+                                checked={abaActived2}
+                                onChange={() => {
+                                    setAbaActived2(!abaActived2)
+                                }}
+                            />
                             <label htmlFor="mais-recentes">
                                 <span>Mais recentes</span>
                             </label>

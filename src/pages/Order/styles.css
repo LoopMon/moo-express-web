@@ -1,0 +1,145 @@
+#page-order {
+    width: 100%;
+}
+
+#page-order main {
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+#page-order main .notificacao {
+    width: 100%;
+    height: 60px;
+    padding: 10px 10px 10px 20px;
+    border-radius: 10px;
+    background-color: #CAE4CA;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#page-order main .detalhes h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#page-order main .detalhes span {
+    display: block;
+    color: #333;
+    margin: 5px 0px;
+}
+
+#page-order main .envio h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#page-order main .envio span {
+    display: block;
+    color: #333;
+    margin: 5px 0px;
+}
+
+#page-order main .entrega h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#page-order main .entrega ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+#page-order main .entrega ul li {
+    margin: 20px 0px;
+}
+
+#page-order main .entrega ul li span {
+    display: block;
+    color: #999;
+}
+
+#page-order main .entrega ul li.check span {
+    color: #38B449;
+}
+
+#page-order main .desc-entrega {
+    margin: 10px 0px;
+}
+
+#page-order main .desc-entrega span {
+    display: block;
+}
+
+#page-order main .desc-entrega span:nth-child(5) {
+    font-weight: 600;
+}
+
+#page-order main .pagamento {
+    margin: 10px 0px;
+}
+
+#page-order main .pagamento h1 {
+    font-size: 1.5rem;
+    margin: 10px 0px;
+}
+
+#page-order main .pagamento > span {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#page-order main .mais h1 {
+    font-size: 1.5rem;
+    margin: 10px 0px;
+}
+
+#page-order main .mais a {
+    display: flex;
+    gap: 10px;
+}
+
+#page-order main .anuncio {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+
+    width: 90%;
+    margin: 1rem;
+}
+
+#page-order main .descricao {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+#page-order main .descricao img {
+    height: 100px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+}
+
+#page-order main .descricao > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: start;
+    gap: 1rem;
+
+    height: 100%;
+}
+
+#page-order main .descricao h3 {
+    font-size: 1.5rem;
+}
+
+#page-order main .descricao div div span {
+    font-size: 1.4rem;
+    font-weight: 600;
+}

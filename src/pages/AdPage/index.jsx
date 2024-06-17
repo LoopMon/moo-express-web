@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import Anuncio from "../../components/Anuncio"
@@ -175,9 +175,9 @@ function AdPage() {
                             <span>Chegará Grátis sexta-feira 26 de abril</span>
 
                             <span>Estoque Disponível</span>
-                            <a href="" id="comprar">
+                            <Link to="/payad/0" id="comprar">
                                 Comprar
-                            </a>
+                            </Link>
                             <a href="" id="add-carrinho">
                                 Adicionar ao Carrinho
                             </a>
