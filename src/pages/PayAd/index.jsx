@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import api from "../../services/api"
 import useAuth from "../../hooks/useAuth"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import Footer from "../../components/Footer"
@@ -16,8 +17,19 @@ function PayAd() {
     const [estado, setEstado] = useState("")
     const [cep, setCep] = useState("")
     const [formaPagamento, setFormaPagamento] = useState("pix")
+    const [ad, setAd] = useState({})
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const buscarAd = async () => {
+            const response = await api.get("/Anuncio/" + id)
+            const data = response.data
+
+            setAd(data)
+        }
+        buscarAd()
+    }, [])
 
     return (
         <>
@@ -27,7 +39,7 @@ function PayAd() {
                     onSubmit={(event) => {
                         event.preventDefault()
 
-                        navigate("/myads")
+                        navigate("/order/" + id)
                     }}
                 >
                     <div className="dados-pessoais">
@@ -231,12 +243,12 @@ function PayAd() {
                     <div className="pagar">
                         <span>Resumo do pedido</span>
                         <ul>
-                            <li>Nome da Vaca</li>
+                            <li>{ad.titulo}</li>
                         </ul>
                         <hr />
                         <span>
                             <span>Valor do produto</span>
-                            <span>R$ 33.000,00</span>
+                            <span>R$ {ad.preco.toFixed(2)}</span>
                         </span>
                         <span>
                             <span>Entrega</span>
@@ -245,7 +257,7 @@ function PayAd() {
                         <hr />
                         <span>
                             <span>Total</span>
-                            <span>R$ 33.000,00</span>
+                            <span>R$ {ad.preco.toFixed(2)}</span>
                         </span>
                         <button>Finalizar Compra</button>
                     </div>

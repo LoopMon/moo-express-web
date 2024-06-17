@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
-import GoogleIcon from "../../assets/Google-icone.png"
-import FacebookIcon from "../../assets/facebook-icone.png"
 import Logo from "../../assets/logo.png"
 import "./style.css"
 

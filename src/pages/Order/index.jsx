@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { Link, useParams } from "react-router-dom"
+import useAuth from "../../hooks/useAuth"
+import api from "../../services/api"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import Footer from "../../components/Footer"
 import "./styles.css"
@@ -21,6 +24,42 @@ const Item = ({ id, src, titulo, preco, data }) => {
 }
 
 function Order() {
+    const { user } = useAuth()
+    const { id } = useParams()
+    const [ad, setAd] = useState({})
+    const [endereco, setEndereco] = useState()
+
+    const formatarData = (data) => {
+        const d = new Date(data)
+        return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
+    }
+
+    useEffect(() => {
+        const buscarAd = async () => {
+            const response = await api.get("/Anuncio/" + id)
+            const data = response.data
+
+            setAd(data)
+        }
+        buscarAd()
+    }, [])
+
+    useEffect(() => {
+        const buscarAd = async () => {
+            const response1 = await api.get("/Anuncio/" + id)
+            const data1 = response1.data
+            const response2 = await api.get("/Endereco_entrega")
+            const data2 = response2.data
+
+            const endereco = data2.find((end) => {
+                return end.vendaId == data1.id
+            })
+
+            setEndereco(endereco)
+        }
+        buscarAd()
+    }, [])
+
     return (
         <>
             <HeaderOnLine />
@@ -33,17 +72,15 @@ function Order() {
                     <div className="detalhes">
                         <h1>Detalhes da compra</h1>
                         <span>Pedido</span>
-                        <span>Data</span>
+                        <span>Data {formatarData(d.publicacao)}</span>
                     </div>
                     <hr />
                     <div className="anuncio">
                         <Item
-                            src={
-                                "https://conteudo.imguol.com.br/c/entretenimento/58/2017/05/30/pikachu-nervoso-1496159464346_v2_450x450.png"
-                            }
-                            titulo={"Pikachu pistola"}
-                            preco={33222}
-                            data={"12/09/21"}
+                            src={ad.img}
+                            titulo={ad.titulo}
+                            preco={ad.preco}
+                            data={formatarData(ad.publicacao)}
                         />
                     </div>
                     <hr />
@@ -86,7 +123,7 @@ function Order() {
                         <span>Cód. de Rastreio FKEKFJ123lcpa</span>
                         <br />
                         <span>Destinatário</span>
-                        <span>Fulano</span>
+                        <span>{user.nome}</span>
                         <span>rua</span>
                         <span>bairro</span>
                         <span>cep</span>
@@ -96,7 +133,7 @@ function Order() {
                         <h1>Pagamento</h1>
                         <span>
                             <span>Valor do produto</span>
-                            <span>R$ 9.000.000,00</span>
+                            <span>R$ {ad.preco.toFixed(2)}</span>
                         </span>
                         <span>
                             <span>Entrega</span>
@@ -104,7 +141,7 @@ function Order() {
                         </span>
                         <span>
                             <span>Valor Pago</span>
-                            <span>R$9.000.000,00</span>
+                            <span>R$ {ad.preco.toFixed(2)}</span>
                         </span>
                     </div>
                 </main>

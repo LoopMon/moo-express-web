@@ -4,7 +4,6 @@ import Anuncio from "../../components/Anuncio"
 import HeaderOffLine from "../../components/HeaderOffLine"
 import PainelAds from "../../components/PainelAds"
 import SeletorItens from "../../components/SeletorItens"
-import lg from "../../assets/mercado-do-boi-gordo.png"
 import Banner1 from "../../assets/banner.png"
 import Banner2 from "../../assets/banner-teste.jpg"
 import Banner3 from "../../assets/banner-teste2.png"
@@ -52,33 +51,6 @@ const seletores = [
     },
 ]
 
-const anuncios = [
-    {
-        id: 0,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-    {
-        id: 1,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-    {
-        id: 2,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-]
-
 const banners = [
     {
         id: 0,
@@ -105,26 +77,18 @@ const selectorElements = seletores.map((seletor) => (
     />
 ))
 
-const adsElements = anuncios.map((anuncio) => (
-    <Anuncio
-        key={anuncio.id}
-        id={anuncio.id}
-        img={anuncio.img}
-        preco={anuncio.preco}
-        titulo={anuncio.titulo}
-        loc={anuncio.loc}
-        time={anuncio.time}
-        src={"/signin"}
-    />
-))
-
 function HomeOffLine() {
     const [abaActived, setAbaActived] = useState(true)
     const [ads, setAds] = useState([])
 
+    const formatarData = (data) => {
+        const d = new Date(data)
+        return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
+    }
+
     useEffect(() => {
         const buscarAds = async () => {
-            const response = await api.get("/")
+            const response = await api.get("/Anuncio")
             const data = response.data
 
             setAds(data)
@@ -163,7 +127,18 @@ function HomeOffLine() {
 
                         <div className="filtros">{selectorElements}</div>
 
-                        <div className="anuncios">{adsElements}</div>
+                        <div className="anuncios">
+                            {ads.map((ad) => (
+                                <Anuncio
+                                    src={`/ad/${ad.id}`}
+                                    id={ad.id}
+                                    titulo={ad.titulo}
+                                    preco={ad.preco}
+                                    img={ad.src}
+                                    data={formatarData(ad.publicacao)}
+                                />
+                            ))}
+                        </div>
 
                         <div className="navegacao">
                             <a href="">Página anterior</a>

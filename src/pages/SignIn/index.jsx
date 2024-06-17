@@ -2,8 +2,6 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import Logo from "../../assets/logo.png"
-import GoogleIcon from "../../assets/Google-icone.png"
-import FacebookIcon from "../../assets/facebook-icone.png"
 import Background from "../../assets/bg-login.png"
 import "./style.css"
 
