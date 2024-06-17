@@ -7,3 +7,8 @@ Iniciar o projeto:
 Executar o projeto:
 
     npm run dev
+
+## Telas da Aplicação
+
+-   Tela de LogIn:
+    ![tela de login](./images/signin-screen.png)

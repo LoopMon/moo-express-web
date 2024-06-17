@@ -1,0 +1,125 @@
+#my-ads {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    margin: 1rem 0;
+}
+
+#my-ads .header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    width: 80%;
+    max-width: 1100px;
+    height: 200px;
+}
+
+#my-ads .header h1 {
+    font-size: 2.5rem;
+}
+
+#my-ads .header a {
+    padding: 0.5rem 1.5rem;
+    background-color: #38B449;
+    border-radius: 2rem;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+#my-ads .abas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 80%;
+    max-width: 1100px;
+}
+
+#my-ads .abas input[type="radio"] { display: none;}
+
+#my-ads .abas input[type="radio"]:checked + label {
+    border-bottom: 5px solid #38B449;
+    color: #38B449;
+}
+
+#my-ads .abas label {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding-block: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 50%;
+    color: #999;
+    border-bottom: 5px solid #999;
+}
+
+#my-ads .anuncios {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    width: 80%;
+    max-width: 1100px;
+    height: 600px;
+    border: 2px solid #999;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#my-ads .anuncio {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+
+    width: 90%;
+    height: 250px;
+    padding: 1rem;
+    border-bottom: 2px solid #252529;
+}
+
+#my-ads .anuncio > span {
+    color: #E97018;
+    font-weight: 600;
+}
+
+#my-ads .descricao {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+#my-ads .descricao img {
+    width: 250px;
+    border-radius: 1.5rem;
+}
+
+#my-ads .descricao > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: start;
+    gap: 1rem;
+
+    height: 100%;
+}
+
+#my-ads .descricao h3 {
+    font-size: 1.5rem;
+}
+
+#my-ads .descricao div div span {
+    font-size: 1.4rem;
+    font-weight: 600;
+}

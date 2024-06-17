@@ -8,7 +8,7 @@
     padding: 8px;
 }
 
-#header-offline .nav-bar {
+#header-offline .search-bar {
     width: 30%;
     border-radius: 8px;
 }
@@ -25,7 +25,7 @@
 
 #header-offline .bar input {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 0.5rem 0.5rem 0.5rem 1rem;
 }
 
@@ -41,7 +41,6 @@
 
 #header-offline nav a {
     display: flex;
-    flex-wrap: nowrap;
 }
 
 #header-offline nav i + span {
@@ -73,4 +72,52 @@
     background-color: #38B449;
     padding: 0.5rem 2.5rem;
     border-radius: 30px;
+}
+
+.menu {
+    display: none;
+}
+
+@media (max-width: 1100px) {
+    .menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    .menu i {
+        font-size: 2.5rem;
+    }
+
+    #header-offline {
+        position: relative;
+    }
+
+    #header-offline nav {
+        position: absolute;
+        top: 5rem;
+        right: -100%;
+        width: 70vw;
+        padding: 1rem;
+        z-index: 2;
+        background-color: #38B449;
+        flex-direction: column;
+        transition: 0.3s right;
+    }
+
+    #header-offline nav.open { 
+        right: 0;
+        border-radius: 0 0 0 10px;
+    }
+    
+    #header-offline nav.open a {
+        color: #fff;
+        font-weight: 600;
+        padding-block: .3rem;
+    }
+
+    #header-offline nav #entrar {
+        all: unset;
+        color: #fff;
+        font-weight: 600;
+    }
 }

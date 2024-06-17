@@ -1,16 +1,30 @@
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import useAuth from "../../hooks/useAuth"
 import Logo from "../../assets/logo.png"
 import GoogleIcon from "../../assets/Google-icone.png"
 import FacebookIcon from "../../assets/facebook-icone.png"
 import Background from "../../assets/bg-login.png"
-import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
 import "./style.css"
 
 function SignIn() {
-    const [cadastro, setCadastro] = useState("")
-    const [senha, setSenha] = useState("")
+    const { signin } = useAuth()
+    const [cadastro, setCadastro] = useState("lucas@email.com")
+    const [senha, setSenha] = useState("123")
+    const [error, setError] = useState("")
 
     const navigate = useNavigate()
+
+    const fazerLogin = async (cadastro, senha) => {
+        const response = await signin(cadastro, senha)
+
+        if (response) {
+            setError(response)
+            return
+        }
+
+        navigate("/home")
+    }
 
     return (
         <main id="pg-login">
@@ -27,23 +41,7 @@ function SignIn() {
                     action=""
                     onSubmit={(event) => {
                         event.preventDefault()
-                        const data = localStorage.getItem(cadastro)
-
-                        if (data == null) {
-                            alert("Usuário não existe")
-                            return
-                        }
-
-                        const json = JSON.parse(data)
-
-                        if (
-                            (json.email === cadastro ||
-                                json.pessoa === cadastro) &&
-                            json.senha === senha
-                        ) {
-                            localStorage.setItem("logado", json.nome)
-                            navigate("/home")
-                        }
+                        fazerLogin(cadastro, senha)
                     }}
                 >
                     <div className="campo">
@@ -72,6 +70,8 @@ function SignIn() {
                             required
                         />
                     </div>
+
+                    <span style={{ color: "red" }}>{error}</span>
 
                     <button type="submit">Entrar</button>
                 </form>

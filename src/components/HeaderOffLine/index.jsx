@@ -1,15 +1,19 @@
-import Logo from "../../assets/logo.png"
+import { useState } from "react"
 import { Link } from "react-router-dom"
+import Logo from "../../assets/logo.png"
 import "./style.css"
 
 function HeaderOffLine() {
+    const [menuOpened, setMenuOpened] = useState(false)
+
     return (
         <header id="header-offline">
             <div className="logo">
                 <img src={Logo} alt="Logo moo express" />
             </div>
-            <div className="nav-bar">
-                {/* Barra de Pesquisa */}
+
+            {/* Barra de Pesquisa */}
+            <div className="search-bar">
                 <div className="bar">
                     <input
                         type="text"
@@ -21,21 +25,22 @@ function HeaderOffLine() {
                 </div>
             </div>
             {/* Fim Barra de Pesquisa */}
-            <nav>
-                <a href="">
+
+            <nav className={menuOpened ? "open" : ""}>
+                <Link to="/signin">
                     <i className="bi bi-grid"></i>
                     <span>Meus anúncios</span>
-                </a>
+                </Link>
 
-                <a href="">
+                <Link to="/signin">
                     <i className="bi bi-chat-text"></i>
                     <span>Chat</span>
-                </a>
+                </Link>
 
-                <a href="">
+                <Link to="/signin">
                     <i className="bi bi-bell"></i>
                     <span>Notificações</span>
-                </a>
+                </Link>
 
                 <Link to="/signin" id="entrar">
                     <span>Entrar</span>
@@ -45,6 +50,19 @@ function HeaderOffLine() {
                     <span>Anunciar</span>
                 </Link>
             </nav>
+
+            <div
+                className="menu"
+                onClick={() => {
+                    setMenuOpened(!menuOpened)
+                }}
+            >
+                {menuOpened ? (
+                    <i className="bi bi-x-lg"></i>
+                ) : (
+                    <i className="bi bi-list"></i>
+                )}
+            </div>
         </header>
     )
 }

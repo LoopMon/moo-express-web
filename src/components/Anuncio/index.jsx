@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom"
 import "./style.css"
 
-function Anuncio({ key, img, preco, titulo, loc, time }) {
+function Anuncio({ id, img, preco, titulo, loc, time, src }) {
     return (
-        <div className="card">
+        <Link to={src} id="card">
             <div className="foto">
                 <img src={img} alt={titulo} />
             </div>
@@ -15,13 +16,13 @@ function Anuncio({ key, img, preco, titulo, loc, time }) {
 
                 <div>
                     <span className="localizacao">
-                        <i class="bi bi-geo-alt"></i>
+                        <i className="bi bi-geo-alt"></i>
                         {loc}
                     </span>
                     <span className="time">{time}</span>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
