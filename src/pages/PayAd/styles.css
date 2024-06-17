@@ -2,86 +2,120 @@
     width: 100%;
 }
 
-#pay-ad main {
+#pay-ad form {
     width: 80%;
+    max-width: 600px;
     margin: 20px auto;
 }
 
-#pay-ad main > div {
+#pay-ad form > div {
     margin-bottom: 20px;
 }
 
-#pay-ad main h1 {
+#pay-ad form h1 {
     font-size: 1.7rem;
 }
 
-#pay-ad main span {
+#pay-ad form span {
     display: block;
 }
 
-#pay-ad main .pagamento > div {
-    width: 100%;
+#pay-ad form .dados-pessoais > div span {
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#pay-ad form .dados-pessoais > div input {
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 50%;
+}
+
+
+#pay-ad form .entrega > div span {
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#pay-ad form .entrega > div input {
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 50%;
+}
+
+#pay-ad form .pagamento > div {
+    margin: 20px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    gap: 10px;   
 }
 
-#pay-ad main .pagamento > div .forma-pg {
+#pay-ad form .pagamento > div .forma-pg {
     width: 200px;
     height: 100px;
     border-radius: 10px;
     border: solid;
-    margin: 5;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#pay-ad main .pagamento > div .forma-pg img {
-    height: 100%;
+#pay-ad form .pagamento > div .forma-pg img {
+    height: 70%;
     object-fit: cover;
     margin: auto;
 }
 
-#pay-ad main .pagar {
+#pay-ad form .pagar {
     width: 500px;
     border-radius: 10px;
     border: 1px solid #333;
     padding: 10px;
+    margin: auto;
 }
 
-#pay-ad main .pagar > span:nth-child(1) {
+#pay-ad form .pagar > span:nth-child(1) {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-#pay-ad main .pagar ul {
+#pay-ad form .pagar ul {
     list-style: disc;
     padding-left: 20px;
 }
 
-#pay-ad main .pagar ul li {
+#pay-ad form .pagar ul li {
     color: #333;
     margin: 10px 5px;
 }
 
-#pay-ad main .pagar span:nth-child(4),
-#pay-ad main .pagar span:nth-child(5),
-#pay-ad main .pagar span:nth-child(7) {
+#pay-ad form .pagar span:nth-child(4),
+#pay-ad form .pagar span:nth-child(5),
+#pay-ad form .pagar span:nth-child(7) {
     display: flex;
     justify-content: space-between;
     margin: 5px;
     color: #333;
 }
 
-#pay-ad main .pagar span:nth-child(7) span {
+#pay-ad form .pagar span:nth-child(7) span {
     font-size: 1.7rem;
     color: #000;
     font-weight: 600;
 }
 
-#pay-ad main .pagar a {
+#pay-ad form .pagar button {
     display: block;
     width: 100%;
     height: 50px;
