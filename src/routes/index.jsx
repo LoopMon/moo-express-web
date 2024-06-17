@@ -5,7 +5,6 @@ import HomeOnLine from "../pages/HomeOnLine"
 import SignIn from "../pages/SignIn"
 import SignUp from "../pages/SignUp"
 import NotificationPage from "../pages/NotificationPage"
-import ChatPage from "../pages/ChatPage"
 import MyAds from "../pages/MyAds"
 import AdPage from "../pages/AdPage"
 import PayAd from "../pages/PayAd"
@@ -41,7 +40,6 @@ const RouteApp = () => {
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/home" element={<HomeOnLine />} />
-                    <Route path="/chat" element={<ChatPage />} />
                     <Route path="/myads" element={<MyAds />} />
                     <Route path="/createad" element={<CreateAd />} />
                     <Route path="/ad/:id" element={<AdPage />} />

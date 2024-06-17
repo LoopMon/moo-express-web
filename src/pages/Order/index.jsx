@@ -107,14 +107,6 @@ function Order() {
                             <span>R$9.000.000,00</span>
                         </span>
                     </div>
-                    <hr />
-                    <div className="mais">
-                        <h1>Contado do Vendedor</h1>
-                        <Link to="/chat" className="contato">
-                            <i className="bi bi-chat-text"></i>
-                            <span>Fulano</span>
-                        </Link>
-                    </div>
                 </main>
             </div>
             <Footer />

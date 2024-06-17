@@ -2,13 +2,13 @@
     width: 100%;
 }
 
-#create-ad main {
+#create-ad form {
     width: 80%;
     max-width: 700px;
     margin: 20px auto;
 }
 
-#create-ad main .notificacao {
+#create-ad form .notificacao {
     width: 100%;
     height: 60px;
     padding: 10px 10px 10px 20px;
@@ -20,63 +20,63 @@
     gap: 10px;
 }
 
-#create-ad main h1:nth-child(1) {
+#create-ad form h1:nth-child(1) {
     text-align: center;
     font-size: 1.7rem;
     margin: 30px 0px;    
 }
 
-#create-ad main h1 {
+#create-ad form h1 {
     font-size: 1.5rem;
     margin: 10px 0px;
 }
 
-#create-ad main > div {
+#create-ad form > div {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin: 20px 0px;
 }
 
-#create-ad main > div label {
+#create-ad form > div label {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
-#create-ad main > div input {
+#create-ad form > div input {
     padding: 10px 10px 10px 15px;
     border-radius: 10px;
     width: 100%;
     border: 1px solid #333;
 }
 
-#create-ad main > div textarea {
+#create-ad form > div textarea {
     padding: 10px 10px 10px 15px;
     border-radius: 10px;
     width: 100%;
     border: 1px solid #333;
 } 
 
-#create-ad main > div input#info-ad {
+#create-ad form > div input#info-ad {
     height: 100px;
 }
 
-#create-ad main > div .button {
+#create-ad form > div .button {
     padding: 10px 30px;
     border-radius: 1.5rem;
     cursor: pointer;
 }
 
-#create-ad main .buttons {
+#create-ad form .buttons {
     flex-direction: row;
     justify-content: space-between;
 }
 
-#create-ad main > div #cancelar {
+#create-ad form > div #cancelar {
     border: 1px solid #333;
 }
 
-#create-ad main > div #avancar {
+#create-ad form > div #avancar {
     background-color: #38B449;
     color: #fff;
 }

@@ -33,11 +33,6 @@ function HeaderOffLine() {
                 </Link>
 
                 <Link to="/signin">
-                    <i className="bi bi-chat-text"></i>
-                    <span>Chat</span>
-                </Link>
-
-                <Link to="/signin">
                     <i className="bi bi-bell"></i>
                     <span>Notificações</span>
                 </Link>
