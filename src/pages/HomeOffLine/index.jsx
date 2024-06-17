@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import Anuncio from "../../components/Anuncio"
 import HeaderOffLine from "../../components/HeaderOffLine"
 import PainelAds from "../../components/PainelAds"
@@ -24,7 +24,7 @@ const seletores = [
     {
         id: 2,
         categoria: "Sexo",
-        filtros: ["Masculino", "Feminino"],
+        filtros: ["Sexo", "Masculino", "Feminino"],
     },
     {
         id: 3,

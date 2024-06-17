@@ -10,7 +10,6 @@
 
 #header-offline .search-bar {
     width: 30%;
-    border-radius: 8px;
 }
 
 #header-offline .bar {
@@ -21,6 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 4px;
 }
 
 #header-offline .bar input {
@@ -90,6 +90,10 @@
 
     #header-offline {
         position: relative;
+    }
+
+    #header-offline .search-bar {
+        width: 60% !important;
     }
 
     #header-offline nav {
