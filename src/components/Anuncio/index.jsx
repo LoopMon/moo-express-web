@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 import "./style.css"
 
-function Anuncio({ id, img, preco, titulo, loc, time }) {
+function Anuncio({ id, img, preco, titulo, loc, time, src }) {
     return (
-        <Link to={`/ad/${id}`} className="card">
+        <Link to={src} id="card">
             <div className="foto">
                 <img src={img} alt={titulo} />
             </div>

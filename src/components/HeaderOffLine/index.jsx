@@ -1,6 +1,6 @@
 import { useState } from "react"
-import Logo from "../../assets/logo.png"
 import { Link } from "react-router-dom"
+import Logo from "../../assets/logo.png"
 import "./style.css"
 
 function HeaderOffLine() {
@@ -27,17 +27,17 @@ function HeaderOffLine() {
             {/* Fim Barra de Pesquisa */}
 
             <nav className={menuOpened ? "open" : ""}>
-                <Link to="/myads">
+                <Link to="/signin">
                     <i className="bi bi-grid"></i>
                     <span>Meus anúncios</span>
                 </Link>
 
-                <Link to="/chat">
+                <Link to="/signin">
                     <i className="bi bi-chat-text"></i>
                     <span>Chat</span>
                 </Link>
 
-                <Link to="/notification">
+                <Link to="/signin">
                     <i className="bi bi-bell"></i>
                     <span>Notificações</span>
                 </Link>

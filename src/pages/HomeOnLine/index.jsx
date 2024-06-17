@@ -113,6 +113,7 @@ const adsElements = anuncios.map((anuncio) => (
         titulo={anuncio.titulo}
         loc={anuncio.loc}
         time={anuncio.time}
+        src={`/ad/${anuncio.id}`}
     />
 ))
 

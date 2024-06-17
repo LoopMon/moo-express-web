@@ -1,0 +1,196 @@
+#ad-page {
+    width: 100%;    
+}
+
+#ad-page main {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+#ad-page .ad-header {
+    margin-bottom: 10px;
+}
+
+#ad-page .ad-header h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+#ad-page .ad-header span {
+    color: #999;
+}
+
+#ad-page .parte1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#ad-page .parte1 .anuncio {
+    width: 700px;
+    height: 600px;
+    display: grid;
+    grid-template-areas: 
+    "apresentacao miniatura"
+    "addesc addesc";
+    grid-template-columns: 550px 150px;
+    grid-template-rows: 450px 200px;
+    gap: 10px;
+}
+
+#ad-page .parte1 .apresentacao {
+    grid-area: apresentacao;
+}
+
+#ad-page .parte1 .apresentacao img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+#ad-page .parte1 .miniaturas {
+    grid-area: miniatura;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+#ad-page .parte1 .miniaturas img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#ad-page .parte1 .ad-desc {
+    grid-area: addesc;
+}
+
+#ad-page .parte1 .ad-desc .descricao,
+#ad-page .parte1 .ad-desc .detalhes,
+#ad-page .parte1 .ad-desc .avaliacoes {
+    display: none;
+}
+
+#ad-page .parte1 .ad-desc .descricao.ativo,
+#ad-page .parte1 .ad-desc .detalhes.ativo,
+#ad-page .parte1 .ad-desc .avaliacoes.ativo {
+    display: block;
+}
+
+#ad-page .parte1 .ad-desc .abas input {
+    display: none;
+}
+
+#ad-page .parte1 .ad-desc .abas label {
+    padding: 20px 2.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#ad-page .parte1 .ad-desc .abas span {
+    color: #999;
+}
+
+#ad-page .abas input[type="radio"]:checked + label span {
+    color: #000;
+}
+
+#ad-page .dados-compra {
+    width: 300px;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#ad-page .dados-compra span {
+    display: inline-block;
+}
+
+#ad-page .dados-compra span:nth-child(1) {
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
+
+#ad-page .dados-compra .estrelas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+#ad-page .dados-compra span:nth-child(3) {
+    margin: 10px 0px;
+}
+
+#ad-page .dados-compra span:nth-child(4) {
+    font-size: 0.85rem;
+    color: #333;
+    margin: 10px 0px;
+}
+
+#ad-page .dados-compra a#comprar {
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    display: inline-block;
+    background-color: #38B449;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+#ad-page .dados-compra a#add-carrinho {
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    display: inline-block;
+    background-color: #CAE4CA;
+    border-radius: 10px;
+    color: #38B449;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+#ad-page .dados-compra span:nth-child(7) {
+    display: block;
+    font-size: 1.1rem;
+}
+
+#ad-page .dados-compra span:nth-child(8) {
+    display: block;
+    color: #444;
+}
+
+#ad-page .dados-compra div {
+    display: flex;
+    gap: 5px;
+    margin: 20px 0px;
+}
+
+#ad-page .parte2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#ad-page .parte2 h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#ad-page .parte2 > div {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}

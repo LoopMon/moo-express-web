@@ -1,15 +1,21 @@
 import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import useAuth from "../../hooks/useAuth"
 import Logo from "../../assets/logo.png"
-import { Link } from "react-router-dom"
 import "./style.css"
 
 function HeaderOnLine() {
+    const { user, signout } = useAuth()
     const [menuOpened, setMenuOpened] = useState(false)
+
+    const navigate = useNavigate()
 
     return (
         <header id="header-offline">
             <div className="logo">
-                <img src={Logo} alt="Logo moo express" />
+                <Link to="/home">
+                    <img src={Logo} alt="Logo moo express" />
+                </Link>
             </div>
             {/* Barra de Pesquisa */}
             <div className="search-bar">
@@ -41,12 +47,18 @@ function HeaderOnLine() {
                 </Link>
 
                 <Link to="" id="entrar">
-                    <span>{localStorage.getItem("logado")}</span>
+                    <span>{user.name}</span>
                 </Link>
 
-                <Link to="/" id="anunciar">
+                <a
+                    id="anunciar"
+                    onClick={() => {
+                        signout()
+                        navigate("/signin")
+                    }}
+                >
                     <span>Sair</span>
-                </Link>
+                </a>
             </nav>
 
             <div

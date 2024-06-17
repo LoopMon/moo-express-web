@@ -15,10 +15,6 @@ function MyAds() {
                     <Link to="/ad-cow">
                         Anunciar gado(s) <i class="bi bi-plus-lg"></i>
                     </Link>
-
-                    <Link to="/ad-cows">
-                        Anunciar rebanho <i class="bi bi-plus-lg"></i>
-                    </Link>
                 </div>
 
                 <div className="abas">

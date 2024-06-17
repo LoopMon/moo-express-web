@@ -1,17 +1,35 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import useAuth from "../../hooks/useAuth"
 import GoogleIcon from "../../assets/Google-icone.png"
 import FacebookIcon from "../../assets/facebook-icone.png"
 import Logo from "../../assets/logo.png"
-import { Link, useNavigate } from "react-router-dom"
 import "./style.css"
 
 function SignUp() {
+    const { signup } = useAuth()
     const [nome, setNome] = useState("")
     const [pessoa, setPessoa] = useState("")
     const [personSelected, setPersonSelected] = useState("CPF")
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const [confirmSenha, setConfirmSenha] = useState("")
+    const [error, setError] = useState("")
+
+    const criarUsuario = async (nome, pessoa, email, senha, confirmSenha) => {
+        if (senha !== confirmSenha) {
+            setError("As senhas devem ser iguais")
+            return
+        }
+
+        const response = await signup(nome, pessoa, email, senha)
+
+        if (response) {
+            setError(response)
+        }
+
+        navigate("/signin")
+    }
 
     const navigate = useNavigate()
 
@@ -46,21 +64,14 @@ function SignUp() {
                         action=""
                         onSubmit={(event) => {
                             event.preventDefault()
-
-                            const dado = {
+                            criarUsuario(
                                 nome,
                                 pessoa,
                                 email,
                                 senha,
                                 confirmSenha,
-                            }
-                            // temporario
-                            localStorage.setItem(
-                                dado.email,
-                                JSON.stringify(dado),
                             )
-
-                            navigate("/signin")
+                            return
                         }}
                     >
                         <label className="campo" htmlFor="apelido">
@@ -174,9 +185,9 @@ function SignUp() {
                             </span>
                         </label>
 
-                        <button type="submit" disabled={senha !== confirmSenha}>
-                            Criar conta
-                        </button>
+                        <span style={{ color: "red" }}>{error}</span>
+
+                        <button type="submit">Criar conta</button>
                     </form>
 
                     <span>
