@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
+import api from "../../services/api"
 import useAuth from "../../hooks/useAuth"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import Anuncio from "../../components/Anuncio"
@@ -53,6 +54,17 @@ function AdPage() {
     const [abaActived1, setAbaActived1] = useState(true)
     const [abaActived2, setAbaActived2] = useState(false)
     const [abaActived3, setAbaActived3] = useState(false)
+    const [ad, setAd] = useState({})
+
+    useEffect(() => {
+        const buscarAd = async () => {
+            const response = await api.get("/")
+            const data = response.data
+
+            setAd(data)
+        }
+        buscarAd()
+    }, [])
 
     return (
         <>

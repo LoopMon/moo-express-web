@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Anuncio from "../../components/Anuncio"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import PainelAds from "../../components/PainelAds"
@@ -10,7 +10,7 @@ import Banner2 from "../../assets/banner-teste.jpg"
 import Banner3 from "../../assets/banner-teste2.png"
 import "./style.css"
 
-const ads = [
+const banners = [
     {
         id: 0,
         src: Banner1,
@@ -136,13 +136,25 @@ const map = filteredElements.map((anuncio) => (
 function HomeOnLine() {
     const [abaActived1, setAbaActived1] = useState(true)
     const [abaActived2, setAbaActived2] = useState(false)
+    const [ads, setAds] = useState([])
+
+    useEffect(() => {
+        const buscarAds = async () => {
+            const response = await api.get("/")
+            const data = response.data
+
+            setAds(data)
+        }
+
+        buscarAds()
+    }, [])
 
     return (
         <>
             <HeaderOnLine />
             <div id="home-offline">
                 <main>
-                    <PainelAds ads={ads} />
+                    <PainelAds ads={banners} />
 
                     <div className="mercado">
                         <div className="abas">

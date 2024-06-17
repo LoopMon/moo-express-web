@@ -1,4 +1,5 @@
-import { useState, useContext } from "react"
+import { useState, useEffect } from "react"
+import api from "../../services/api"
 import Anuncio from "../../components/Anuncio"
 import HeaderOffLine from "../../components/HeaderOffLine"
 import PainelAds from "../../components/PainelAds"
@@ -78,7 +79,7 @@ const anuncios = [
     },
 ]
 
-const ads = [
+const banners = [
     {
         id: 0,
         src: Banner1,
@@ -119,13 +120,25 @@ const adsElements = anuncios.map((anuncio) => (
 
 function HomeOffLine() {
     const [abaActived, setAbaActived] = useState(true)
+    const [ads, setAds] = useState([])
+
+    useEffect(() => {
+        const buscarAds = async () => {
+            const response = await api.get("/")
+            const data = response.data
+
+            setAds(data)
+        }
+
+        buscarAds()
+    }, [])
 
     return (
         <>
             <HeaderOffLine />
             <div id="home-offline">
                 <main>
-                    <PainelAds ads={ads} />
+                    <PainelAds ads={banners} />
 
                     <div className="mercado">
                         <div className="abas">

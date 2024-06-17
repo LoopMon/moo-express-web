@@ -42,24 +42,6 @@ function SignUp() {
                         <h1>Crie a sua conta. É grátis!</h1>
                     </div>
 
-                    <div className="redes">
-                        <div>
-                            <img src={GoogleIcon} alt="google" />
-                        </div>
-                        <div>
-                            <img src={FacebookIcon} alt="facebook" />
-                        </div>
-                    </div>
-
-                    <span>
-                        <span>ou</span>
-                    </span>
-
-                    <span>
-                        Nos informe alguns dados para que possamos melhorar a
-                        sua experiência na MooExpress.
-                    </span>
-
                     <form
                         action=""
                         onSubmit={(event) => {

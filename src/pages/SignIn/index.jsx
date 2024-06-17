@@ -76,20 +76,6 @@ function SignIn() {
                     <button type="submit">Entrar</button>
                 </form>
 
-                <div className="se-conecte">
-                    <span>
-                        <span>ou conecte com</span>
-                    </span>
-                    <div className="conexoes">
-                        <a href="">
-                            <img src={GoogleIcon} alt="google" />
-                        </a>
-                        <a href="">
-                            <img src={FacebookIcon} alt="facebook" />
-                        </a>
-                    </div>
-                </div>
-
                 <span>
                     Não tem uma conta? <Link to="/signup">Casdastre-se</Link>
                 </span>

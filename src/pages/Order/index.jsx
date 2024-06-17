@@ -3,9 +3,9 @@ import HeaderOnLine from "../../components/HeaderOnLine"
 import Footer from "../../components/Footer"
 import "./styles.css"
 
-const Item = ({ src, titulo, preco, data }) => {
+const Item = ({ id, src, titulo, preco, data }) => {
     return (
-        <Link to={"/"} className="anuncio">
+        <Link to={`/ad/${id}`} className="anuncio">
             <div className="descricao">
                 <img src={src} alt={titulo} />
                 <div>

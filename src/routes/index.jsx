@@ -20,12 +20,9 @@ const Error404 = () => {
                 alignItems: "center",
             }}
         >
-            <Link
-                to="/"
-                style={{ color: "blue", fontSize: "5rem", textAlign: "center" }}
-            >
+            <Link to="/" style={{ fontSize: "4rem", textAlign: "center" }}>
                 <h1> Error: 404</h1>
-                Voltar para home
+                <span style={{ color: "blue" }}>Voltar para home</span>
             </Link>
         </div>
     )
