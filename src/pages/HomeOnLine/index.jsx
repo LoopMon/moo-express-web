@@ -64,20 +64,6 @@ const selectorElements = seletores.map((seletor) => (
     />
 ))
 
-const filteredElements = anuncios.filter((anuncio) => anuncio.preco > 3000)
-const map = filteredElements.map((anuncio) => (
-    <Anuncio
-        key={anuncio.id}
-        id={anuncio.id}
-        img={anuncio.img}
-        preco={anuncio.preco}
-        titulo={anuncio.titulo}
-        loc={anuncio.loc}
-        time={anuncio.time}
-        src={`/ad/${anuncio.id}`}
-    />
-))
-
 function HomeOnLine() {
     const [abaActived1, setAbaActived1] = useState(true)
     const [abaActived2, setAbaActived2] = useState(false)
@@ -151,7 +137,7 @@ function HomeOnLine() {
                                           data={formatarData(ad.publicacao)}
                                       />
                                   ))
-                                : map}
+                                : " "}
                         </div>
 
                         <div className="navegacao">

@@ -4,10 +4,8 @@ import Anuncio from "../../components/Anuncio"
 import HeaderOffLine from "../../components/HeaderOffLine"
 import PainelAds from "../../components/PainelAds"
 import SeletorItens from "../../components/SeletorItens"
-import Banner1 from "../../assets/banner.png"
-import Banner2 from "../../assets/banner-teste.jpg"
-import Banner3 from "../../assets/banner-teste2.png"
 import Footer from "../../components/Footer"
+import Banner1 from "../../assets/banner.png"
 import "./style.css"
 
 const seletores = [
@@ -56,16 +54,6 @@ const banners = [
         id: 0,
         src: Banner1,
         alt: "Moo Ad",
-    },
-    {
-        id: 1,
-        src: Banner2,
-        alt: "Teste",
-    },
-    {
-        id: 2,
-        src: Banner3,
-        alt: "Teste",
     },
 ]
 
