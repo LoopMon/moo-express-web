@@ -36,11 +36,6 @@ function HeaderOnLine() {
                     <span>Meus anúncios</span>
                 </Link>
 
-                <Link to="/chat">
-                    <i className="bi bi-chat-text"></i>
-                    <span>Chat</span>
-                </Link>
-
                 <Link to="/notification">
                     <i className="bi bi-bell"></i>
                     <span>Notificações</span>

@@ -1,51 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
+import api from "../../services/api"
 import useAuth from "../../hooks/useAuth"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import Anuncio from "../../components/Anuncio"
 import Footer from "../../components/Footer"
-import lg from "../../assets/mercado-do-boi-gordo.png"
 import "./styles.css"
-
-const anuncios = [
-    {
-        id: 0,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-    {
-        id: 1,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-    {
-        id: 2,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-]
-
-const adsElements = anuncios.map((anuncio) => (
-    <Anuncio
-        key={anuncio.id}
-        id={anuncio.id}
-        img={anuncio.img}
-        preco={anuncio.preco}
-        titulo={anuncio.titulo}
-        loc={anuncio.loc}
-        time={anuncio.time}
-        src={`/ad/${anuncio.id}`}
-    />
-))
 
 function AdPage() {
     const { user } = useAuth()
@@ -53,6 +13,34 @@ function AdPage() {
     const [abaActived1, setAbaActived1] = useState(true)
     const [abaActived2, setAbaActived2] = useState(false)
     const [abaActived3, setAbaActived3] = useState(false)
+    const dataAtual = new Date()
+    const [ad, setAd] = useState({})
+    const [ads, setAds] = useState([])
+
+    const formatarData = (data) => {
+        const d = new Date(data)
+        return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
+    }
+
+    useEffect(() => {
+        const buscarAd = async () => {
+            const response = await api.get("/Anuncio")
+            const data = response.data
+
+            setAds(data)
+        }
+        buscarAd()
+    }, [])
+
+    useEffect(() => {
+        const buscarAd = async () => {
+            const response = await api.get("/Anuncio/" + id)
+            const data = response.data
+
+            setAd(data)
+        }
+        buscarAd()
+    }, [])
 
     return (
         <>
@@ -60,19 +48,35 @@ function AdPage() {
             <div id="ad-page">
                 <main>
                     <div className="ad-header">
-                        <h1>Nome da Vaca</h1>
-                        <span>Data pulicação</span>
+                        <h1>{ad.titulo}</h1>
+                        <span>{formatarData(ad.publicacao)}</span>
                     </div>
                     <section className="parte1">
                         <div className="anuncio">
                             <div className="apresentacao">
-                                <img src={lg} />
+                                <img src={ad.img} alt={ad.titulo} />
                             </div>
                             <div className="miniaturas">
-                                <img src={lg} className="img1" />
-                                <img src={lg} className="img2" />
-                                <img src={lg} className="img3" />
-                                <img src={lg} className="img4" />
+                                <img
+                                    src={ad.img}
+                                    alt={ad.titulo}
+                                    className="img1"
+                                />
+                                <img
+                                    src={ad.img}
+                                    alt={ad.titulo}
+                                    className="img2"
+                                />
+                                <img
+                                    src={ad.img}
+                                    alt={ad.titulo}
+                                    className="img3"
+                                />
+                                <img
+                                    src={ad.img}
+                                    alt={ad.titulo}
+                                    className="img4"
+                                />
                             </div>
 
                             <div className="ad-desc">
@@ -130,7 +134,7 @@ function AdPage() {
                                                 : "descricao"
                                         }
                                     >
-                                        LAAAAAA
+                                        {ad.descricao}
                                     </div>
                                     <div
                                         className={
@@ -152,37 +156,39 @@ function AdPage() {
                                         }
                                     >
                                         Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Nesciunt laborum, est
-                                        velit reiciendis vel fugit consequuntur?
-                                        Accusamus quod blanditiis dolores labore
-                                        qui, quisquam facilis non, veniam quos,
-                                        laudantium vitae. Rerum.
+                                        adipisicing elit. Nesciunt beatae rem
+                                        tenetur quia, dolorum iusto. Autem,
+                                        commodi laborum illum non tempora
+                                        repellat accusantium, cum doloremque,
+                                        optio ut tenetur. Iste, eius.
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="dados-compra">
                             <span>
-                                <h1>R$ 9.600.000,00</h1>
+                                <h1>R$ {ad.preco.toFixed(2)}</h1>
                             </span>
                             <span className="estrelas">
                                 <span>4.8</span>
                                 <span>
                                     <i className="bi bi-star-fill"></i>
                                 </span>
-                                <span>(231)</span>
+                                <span>(23)</span>
                             </span>
-                            <span>Chegará Grátis sexta-feira 26 de abril</span>
+                            <span>
+                                Chegará Grátis no dia
+                                {dataAtual.getDate() + 4 > 30
+                                    ? dataAtual.getDate() + 4 - 30
+                                    : dataAtual.getDate() + 4}
+                            </span>
 
                             <span>Estoque Disponível</span>
-                            <Link to="/payad/0" id="comprar">
+                            <Link to={"/payad/" + ad.id} id="comprar">
                                 Comprar
                             </Link>
-                            <a href="" id="add-carrinho">
-                                Adicionar ao Carrinho
-                            </a>
 
-                            <span>Vendedor</span>
+                            <span></span>
                             <span>categ do vendedor</span>
 
                             <div>
@@ -203,7 +209,19 @@ function AdPage() {
                     </section>
                     <section className="parte2">
                         <h2>Também podem te interessar</h2>
-                        <div>{adsElements}</div>
+                        <div>
+                            {ads.map((anuncio) => (
+                                <Anuncio
+                                    key={anuncio.id}
+                                    id={anuncio.id}
+                                    img={anuncio.img}
+                                    preco={anuncio.preco}
+                                    titulo={anuncio.titulo}
+                                    time={formatarData(anuncio.publicacao)}
+                                    src={`/ad/${anuncio.id}`}
+                                />
+                            ))}
+                        </div>
                     </section>
                 </main>
             </div>

@@ -8,21 +8,17 @@ const AuthProvider = ({ children }) => {
 
     const signin = async (login, password) => {
         try {
-            const response = await api.get("/users")
+            const response = await api.get("/Usuario")
             const data = response.data
 
             const user = data.find((user) => {
-                if (user.person === login || user.email === login) {
+                if (user.codigo === login || user.email === login) {
                     return user
                 }
             })
 
-            if (!user) {
-                return "Usuário inválido"
-            }
-
-            if (user.password !== password) {
-                return "Senha inválida"
+            if (!user || user.senha !== password) {
+                return "Usuário ou senha inválidos"
             }
 
             setUser(user)
@@ -35,22 +31,22 @@ const AuthProvider = ({ children }) => {
 
     const signup = async (name, person, email, password) => {
         try {
-            const response = await api.get("/users")
+            const response = await api.get("/Usuario")
             const users = response.data
 
             const user = users.find(
-                (user) => user.email === email || user.cod === person,
+                (user) => user.email === email || user.codigo === person,
             )
 
             if (user) {
                 return "E-mail ou CPF/CNPJ já cadastrado"
             }
 
-            const data = await api.post("/users", {
-                name,
-                cod: person,
+            const data = await api.post("/Usuario", {
+                nome: name,
+                codigo: person,
                 email,
-                password,
+                senha: password,
             })
             return
         } catch (error) {

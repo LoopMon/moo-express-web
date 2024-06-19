@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
-import GoogleIcon from "../../assets/Google-icone.png"
-import FacebookIcon from "../../assets/facebook-icone.png"
 import Logo from "../../assets/logo.png"
 import "./style.css"
 
@@ -41,24 +39,6 @@ function SignUp() {
                         <img src={Logo} alt="logo mooexpress" />
                         <h1>Crie a sua conta. É grátis!</h1>
                     </div>
-
-                    <div className="redes">
-                        <div>
-                            <img src={GoogleIcon} alt="google" />
-                        </div>
-                        <div>
-                            <img src={FacebookIcon} alt="facebook" />
-                        </div>
-                    </div>
-
-                    <span>
-                        <span>ou</span>
-                    </span>
-
-                    <span>
-                        Nos informe alguns dados para que possamos melhorar a
-                        sua experiência na MooExpress.
-                    </span>
 
                     <form
                         action=""

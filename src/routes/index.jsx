@@ -5,7 +5,6 @@ import HomeOnLine from "../pages/HomeOnLine"
 import SignIn from "../pages/SignIn"
 import SignUp from "../pages/SignUp"
 import NotificationPage from "../pages/NotificationPage"
-import ChatPage from "../pages/ChatPage"
 import MyAds from "../pages/MyAds"
 import AdPage from "../pages/AdPage"
 import PayAd from "../pages/PayAd"
@@ -21,12 +20,9 @@ const Error404 = () => {
                 alignItems: "center",
             }}
         >
-            <Link
-                to="/"
-                style={{ color: "blue", fontSize: "5rem", textAlign: "center" }}
-            >
+            <Link to="/" style={{ fontSize: "4rem", textAlign: "center" }}>
                 <h1> Error: 404</h1>
-                Voltar para home
+                <span style={{ color: "blue" }}>Voltar para home</span>
             </Link>
         </div>
     )
@@ -41,7 +37,6 @@ const RouteApp = () => {
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/home" element={<HomeOnLine />} />
-                    <Route path="/chat" element={<ChatPage />} />
                     <Route path="/myads" element={<MyAds />} />
                     <Route path="/createad" element={<CreateAd />} />
                     <Route path="/ad/:id" element={<AdPage />} />

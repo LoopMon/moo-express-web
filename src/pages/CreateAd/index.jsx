@@ -12,7 +12,14 @@ function CreateAd() {
         <>
             <HeaderOnLine />
             <div id="create-ad">
-                <main>
+                <form
+                    action=""
+                    onSubmit={(event) => {
+                        event.preventDefault()
+                        navigate("/myads")
+                        return
+                    }}
+                >
                     <h1>
                         {tela === "1"
                             ? "Informe algumas características do seu gado"
@@ -32,6 +39,7 @@ function CreateAd() {
                                     type="text"
                                     placeholder="Digite a raça"
                                     id="raca"
+                                    required
                                 />
                             </div>
                             <div>
@@ -40,6 +48,7 @@ function CreateAd() {
                                     type="text"
                                     placeholder="Digite a idade"
                                     id="idade"
+                                    required
                                 />
                             </div>
                             <div>
@@ -48,6 +57,7 @@ function CreateAd() {
                                     type="text"
                                     placeholder="Digite o sexo"
                                     id="sexo"
+                                    required
                                 />
                             </div>
                             <div>
@@ -56,6 +66,7 @@ function CreateAd() {
                                     type="text"
                                     placeholder="Digite o peso em Kg"
                                     id="peso"
+                                    required
                                 />
                             </div>
                             <div>
@@ -64,6 +75,7 @@ function CreateAd() {
                                     type="text"
                                     placeholder="Digite a cor do gado"
                                     id="cor"
+                                    required
                                 />
                             </div>
                             <div className="buttons">
@@ -94,6 +106,7 @@ function CreateAd() {
                                     type="text"
                                     placeholder="Exemplo: Gado branco"
                                     id="titulo"
+                                    required
                                 />
                                 <span>
                                     Coloque um breve resumo do que você está
@@ -107,6 +120,7 @@ function CreateAd() {
                                 <textarea
                                     placeholder="Escreva aqui por quê você está anunciando esse gado e infomações adicionais que podem ajudar na venda."
                                     id="info-ad"
+                                    required
                                 />
                             </div>
                             <div>
@@ -117,6 +131,7 @@ function CreateAd() {
                                     type="text"
                                     placeholder="00000-000"
                                     id="cep"
+                                    required
                                 />
                             </div>
                             <div>
@@ -125,6 +140,7 @@ function CreateAd() {
                                     type="text"
                                     placeholder="R$ 0,00"
                                     id="preco"
+                                    required
                                 />
                             </div>
                             <div>
@@ -148,20 +164,13 @@ function CreateAd() {
                                 >
                                     voltar
                                 </a>
-                                <span
-                                    href=""
-                                    id="avancar"
-                                    className="button"
-                                    onClick={() => {
-                                        navigate("/myads")
-                                    }}
-                                >
+                                <button id="avancar" className="button">
                                     Anunciar
-                                </span>
+                                </button>
                             </div>
                         </Fragment>
                     )}
-                </main>
+                </form>
             </div>
             <Footer />
         </>

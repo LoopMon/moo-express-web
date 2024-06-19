@@ -2,8 +2,6 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import Logo from "../../assets/logo.png"
-import GoogleIcon from "../../assets/Google-icone.png"
-import FacebookIcon from "../../assets/facebook-icone.png"
 import Background from "../../assets/bg-login.png"
 import "./style.css"
 
@@ -75,20 +73,6 @@ function SignIn() {
 
                     <button type="submit">Entrar</button>
                 </form>
-
-                <div className="se-conecte">
-                    <span>
-                        <span>ou conecte com</span>
-                    </span>
-                    <div className="conexoes">
-                        <a href="">
-                            <img src={GoogleIcon} alt="google" />
-                        </a>
-                        <a href="">
-                            <img src={FacebookIcon} alt="facebook" />
-                        </a>
-                    </div>
-                </div>
 
                 <span>
                     Não tem uma conta? <Link to="/signup">Casdastre-se</Link>

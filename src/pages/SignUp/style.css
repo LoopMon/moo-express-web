@@ -9,7 +9,8 @@
 }
 
 #sign-in {
-    width: 40vw;
+    width: 80%;
+    max-width: 600px;
     
     display: flex;
     flex-direction: column;
@@ -18,6 +19,7 @@
 }
 
 #sign-in section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;

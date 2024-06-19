@@ -1,14 +1,19 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Anuncio from "../../components/Anuncio"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import PainelAds from "../../components/PainelAds"
 import SeletorItens from "../../components/SeletorItens"
-import lg from "../../assets/mercado-do-boi-gordo.png"
-import Banner1 from "../../assets/banner.png"
-import Banner2 from "../../assets/banner-teste.jpg"
-import Banner3 from "../../assets/banner-teste2.png"
 import Footer from "../../components/Footer"
+import Banner1 from "../../assets/banner.png"
 import "./style.css"
+
+const banners = [
+    {
+        id: 0,
+        src: Banner1,
+        alt: "Moo Ad",
+    },
+]
 
 const seletores = [
     {
@@ -51,51 +56,6 @@ const seletores = [
     },
 ]
 
-const anuncios = [
-    {
-        id: 0,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-    {
-        id: 1,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-    {
-        id: 2,
-        img: lg,
-        preco: 120000,
-        titulo: "Iris 8 FIV Valônia, 2 anos de idade, macho, 620kg",
-        loc: "Bahia, chama",
-        time: "amanha, 23:23",
-    },
-]
-
-const ads = [
-    {
-        id: 0,
-        src: Banner1,
-        alt: "Moo Ad",
-    },
-    {
-        id: 1,
-        src: Banner2,
-        alt: "Teste",
-    },
-    {
-        id: 2,
-        src: Banner3,
-        alt: "Teste",
-    },
-]
-
 const selectorElements = seletores.map((seletor) => (
     <SeletorItens
         key={seletor.id}
@@ -104,29 +64,33 @@ const selectorElements = seletores.map((seletor) => (
     />
 ))
 
-const adsElements = anuncios.map((anuncio) => (
-    <Anuncio
-        key={anuncio.id}
-        id={anuncio.id}
-        img={anuncio.img}
-        preco={anuncio.preco}
-        titulo={anuncio.titulo}
-        loc={anuncio.loc}
-        time={anuncio.time}
-        src={`/ad/${anuncio.id}`}
-    />
-))
-
 function HomeOnLine() {
     const [abaActived1, setAbaActived1] = useState(true)
-    const [abaActived2, setAbaActived2] = useState(true)
+    const [abaActived2, setAbaActived2] = useState(false)
+    const [ads, setAds] = useState([])
+
+    const formatarData = (data) => {
+        const d = new Date(data)
+        return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
+    }
+
+    useEffect(() => {
+        const buscarAds = async () => {
+            const response = await api.get("/Anuncio")
+            const data = response.data
+
+            setAds(data)
+        }
+
+        buscarAds()
+    }, [])
 
     return (
         <>
             <HeaderOnLine />
             <div id="home-offline">
                 <main>
-                    <PainelAds ads={ads} />
+                    <PainelAds ads={banners} />
 
                     <div className="mercado">
                         <div className="abas">
@@ -136,7 +100,8 @@ function HomeOnLine() {
                                 id="mais-buscados"
                                 checked={abaActived1}
                                 onChange={() => {
-                                    setAbaActived1(!abaActived1)
+                                    setAbaActived1(true)
+                                    setAbaActived2(false)
                                 }}
                             />
                             <label htmlFor="mais-buscados">
@@ -149,7 +114,8 @@ function HomeOnLine() {
                                 id="mais-recentes"
                                 checked={abaActived2}
                                 onChange={() => {
-                                    setAbaActived2(!abaActived2)
+                                    setAbaActived2(true)
+                                    setAbaActived1(false)
                                 }}
                             />
                             <label htmlFor="mais-recentes">
@@ -159,7 +125,20 @@ function HomeOnLine() {
 
                         <div className="filtros">{selectorElements}</div>
 
-                        <div className="anuncios">{adsElements}</div>
+                        <div className="anuncios">
+                            {abaActived1
+                                ? ads.map((ad) => (
+                                      <Anuncio
+                                          src={`/ad/${ad.id}`}
+                                          id={ad.id}
+                                          titulo={ad.titulo}
+                                          preco={ad.preco}
+                                          img={ad.src}
+                                          data={formatarData(ad.publicacao)}
+                                      />
+                                  ))
+                                : " "}
+                        </div>
 
                         <div className="navegacao">
                             <a href="">Página anterior</a>

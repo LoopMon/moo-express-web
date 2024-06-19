@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import "./style.css"
 
-function Anuncio({ id, img, preco, titulo, loc, time, src }) {
+function Anuncio({ id, img, preco, titulo, time, src }) {
     return (
         <Link to={src} id="card">
             <div className="foto">
@@ -15,10 +15,6 @@ function Anuncio({ id, img, preco, titulo, loc, time, src }) {
                 </div>
 
                 <div>
-                    <span className="localizacao">
-                        <i className="bi bi-geo-alt"></i>
-                        {loc}
-                    </span>
                     <span className="time">{time}</span>
                 </div>
             </div>
