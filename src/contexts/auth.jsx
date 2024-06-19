@@ -17,12 +17,8 @@ const AuthProvider = ({ children }) => {
                 }
             })
 
-            if (!user) {
-                return "Usuário inválido"
-            }
-
-            if (user.senha !== password) {
-                return "Senha inválida"
+            if (!user || user.senha !== password) {
+                return "Usuário ou senha inválidos"
             }
 
             setUser(user)
