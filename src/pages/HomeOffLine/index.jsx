@@ -120,7 +120,7 @@ function HomeOffLine() {
                             {ads.map((ad, index) => (
                                 <Anuncio
                                     key={index}
-                                    src={`/ad/${ad.id}`}
+                                    src={"/signin"}
                                     id={ad.id}
                                     titulo={ad.titulo}
                                     preco={ad.preco}
