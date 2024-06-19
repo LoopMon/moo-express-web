@@ -42,7 +42,7 @@ function HeaderOnLine() {
                 </Link>
 
                 <Link to="" id="entrar">
-                    <span>{user.name}</span>
+                    <span>{user.nome}</span>
                 </Link>
 
                 <a

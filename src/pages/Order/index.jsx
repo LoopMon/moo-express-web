@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth"
 import api from "../../services/api"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import Footer from "../../components/Footer"
+import boi from "../../assets/mercado-do-boi-gordo.png"
 import "./styles.css"
 
 const Item = ({ id, src, titulo, preco, data }) => {
@@ -14,7 +15,7 @@ const Item = ({ id, src, titulo, preco, data }) => {
                 <div>
                     <div>
                         <h3>{titulo}</h3>
-                        <span>R$ {preco.toFixed(2)}</span>
+                        <span>R$ {preco}</span>
                     </div>
                     <span>Expirado em: {data}</span>
                 </div>
@@ -36,16 +37,6 @@ function Order() {
 
     useEffect(() => {
         const buscarAd = async () => {
-            const response = await api.get("/Anuncio/" + id)
-            const data = response.data
-
-            setAd(data)
-        }
-        buscarAd()
-    }, [])
-
-    useEffect(() => {
-        const buscarAd = async () => {
             const response1 = await api.get("/Anuncio/" + id)
             const data1 = response1.data
             const response2 = await api.get("/Endereco_entrega")
@@ -56,6 +47,7 @@ function Order() {
             })
 
             setEndereco(endereco)
+            setAd(data1)
         }
         buscarAd()
     }, [])
@@ -72,12 +64,12 @@ function Order() {
                     <div className="detalhes">
                         <h1>Detalhes da compra</h1>
                         <span>Pedido</span>
-                        <span>Data {formatarData(d.publicacao)}</span>
+                        <span>Data {formatarData(ad.publicacao)}</span>
                     </div>
                     <hr />
                     <div className="anuncio">
                         <Item
-                            src={ad.img}
+                            src={boi}
                             titulo={ad.titulo}
                             preco={ad.preco}
                             data={formatarData(ad.publicacao)}
@@ -133,7 +125,7 @@ function Order() {
                         <h1>Pagamento</h1>
                         <span>
                             <span>Valor do produto</span>
-                            <span>R$ {ad.preco.toFixed(2)}</span>
+                            <span>R$ {ad.preco}</span>
                         </span>
                         <span>
                             <span>Entrega</span>
@@ -141,7 +133,7 @@ function Order() {
                         </span>
                         <span>
                             <span>Valor Pago</span>
-                            <span>R$ {ad.preco.toFixed(2)}</span>
+                            <span>R$ {ad.preco}</span>
                         </span>
                     </div>
                 </main>

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
+import api from "../../services/api"
 import Anuncio from "../../components/Anuncio"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import PainelAds from "../../components/PainelAds"
 import SeletorItens from "../../components/SeletorItens"
 import Footer from "../../components/Footer"
 import Banner1 from "../../assets/banner.png"
+import boi from "../../assets/mercado-do-boi-gordo.png"
 import "./style.css"
 
 const banners = [
@@ -127,13 +129,14 @@ function HomeOnLine() {
 
                         <div className="anuncios">
                             {abaActived1
-                                ? ads.map((ad) => (
+                                ? ads.map((ad, index) => (
                                       <Anuncio
+                                          key={index}
                                           src={`/ad/${ad.id}`}
                                           id={ad.id}
                                           titulo={ad.titulo}
                                           preco={ad.preco}
-                                          img={ad.src}
+                                          img={boi}
                                           data={formatarData(ad.publicacao)}
                                       />
                                   ))
