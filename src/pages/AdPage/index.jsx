@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth"
 import HeaderOnLine from "../../components/HeaderOnLine"
 import Anuncio from "../../components/Anuncio"
 import Footer from "../../components/Footer"
+import boi from "../../assets/mercado-do-boi-gordo.png"
 import "./styles.css"
 
 function AdPage() {
@@ -54,26 +55,26 @@ function AdPage() {
                     <section className="parte1">
                         <div className="anuncio">
                             <div className="apresentacao">
-                                <img src={ad.img} alt={ad.titulo} />
+                                <img src={boi} alt={ad.titulo} />
                             </div>
                             <div className="miniaturas">
                                 <img
-                                    src={ad.img}
+                                    src={boi}
                                     alt={ad.titulo}
                                     className="img1"
                                 />
                                 <img
-                                    src={ad.img}
+                                    src={boi}
                                     alt={ad.titulo}
                                     className="img2"
                                 />
                                 <img
-                                    src={ad.img}
+                                    src={boi}
                                     alt={ad.titulo}
                                     className="img3"
                                 />
                                 <img
-                                    src={ad.img}
+                                    src={boi}
                                     alt={ad.titulo}
                                     className="img4"
                                 />
@@ -214,7 +215,7 @@ function AdPage() {
                                 <Anuncio
                                     key={anuncio.id}
                                     id={anuncio.id}
-                                    img={anuncio.img}
+                                    img={boi}
                                     preco={anuncio.preco}
                                     titulo={anuncio.titulo}
                                     time={formatarData(anuncio.publicacao)}
