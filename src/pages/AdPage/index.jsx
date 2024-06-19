@@ -14,7 +14,6 @@ function AdPage() {
     const [abaActived1, setAbaActived1] = useState(true)
     const [abaActived2, setAbaActived2] = useState(false)
     const [abaActived3, setAbaActived3] = useState(false)
-    const dataAtual = new Date()
     const [ad, setAd] = useState({})
     const [ads, setAds] = useState([])
 
@@ -25,20 +24,14 @@ function AdPage() {
 
     useEffect(() => {
         const buscarAd = async () => {
-            const response = await api.get("/Anuncio")
-            const data = response.data
+            const response1 = await api.get("/Anuncio")
+            const response2 = await api.get("/Anuncio/" + id)
 
-            setAds(data)
-        }
-        buscarAd()
-    }, [])
+            const data1 = response1.data
+            const data2 = response2.data
 
-    useEffect(() => {
-        const buscarAd = async () => {
-            const response = await api.get("/Anuncio/" + id)
-            const data = response.data
-
-            setAd(data)
+            setAds(data1)
+            setAd(data2)
         }
         buscarAd()
     }, [])
@@ -168,7 +161,7 @@ function AdPage() {
                         </div>
                         <div className="dados-compra">
                             <span>
-                                <h1>R$ {ad.preco.toFixed(2)}</h1>
+                                <h1>R$ {ad.preco}</h1>
                             </span>
                             <span className="estrelas">
                                 <span>4.8</span>

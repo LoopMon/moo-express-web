@@ -248,7 +248,7 @@ function PayAd() {
                         <hr />
                         <span>
                             <span>Valor do produto</span>
-                            <span>R$ {ad.preco.toFixed(2)}</span>
+                            <span>R$ {ad.preco}</span>
                         </span>
                         <span>
                             <span>Entrega</span>
@@ -257,7 +257,7 @@ function PayAd() {
                         <hr />
                         <span>
                             <span>Total</span>
-                            <span>R$ {ad.preco.toFixed(2)}</span>
+                            <span>R$ {ad.preco}</span>
                         </span>
                         <button>Finalizar Compra</button>
                     </div>

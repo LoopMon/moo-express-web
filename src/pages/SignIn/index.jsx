@@ -7,8 +7,8 @@ import "./style.css"
 
 function SignIn() {
     const { signin } = useAuth()
-    const [cadastro, setCadastro] = useState("lucas@email.com")
-    const [senha, setSenha] = useState("123")
+    const [cadastro, setCadastro] = useState("")
+    const [senha, setSenha] = useState("")
     const [error, setError] = useState("")
 
     const navigate = useNavigate()
@@ -75,7 +75,7 @@ function SignIn() {
                 </form>
 
                 <span>
-                    Não tem uma conta? <Link to="/signup">Casdastre-se</Link>
+                    Não tem uma conta? <Link to="/signup">Cadastre-se</Link>
                 </span>
             </section>
         </main>
